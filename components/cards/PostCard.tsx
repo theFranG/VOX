@@ -1,7 +1,6 @@
 import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
 
 interface Props {
   id: string;
@@ -13,7 +12,7 @@ interface Props {
     id: string;
     name: string;
     image: string;
-  } | null;
+  } ;
   createdAt: string;
   comments: {
     author: {
@@ -133,7 +132,7 @@ const PostCard = ({
               className={`${index !== 0 && "-ml-5"} rounded-full object-cover`}
             />
           ))}
-
+        
           <Link href={`/thread/${id}`}>
             <p className="mt-1 text-subtle-medium text-gray-1">
               {comments.length} repl{comments.length > 1 ? "ies" : "y"}
@@ -141,7 +140,6 @@ const PostCard = ({
           </Link>
         </div>
       )}
-
       {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}

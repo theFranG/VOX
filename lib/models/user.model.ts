@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   },
   image: String,
   bio: String,
-  post: [
+  posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Post",

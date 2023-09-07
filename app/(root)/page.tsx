@@ -7,8 +7,8 @@ const result = await fetchPosts(1, 30)
 const user = await currentUser()
 
 
-  return (
-    <>
+return (
+  <>
     <h1 className="head-text text-left">Home</h1>
     <section className='mt-9 flex flex-col gap-10'>
         {result.posts.length === 0 ? (
@@ -26,10 +26,11 @@ const user = await currentUser()
                 community={post.community}
                 createdAt={post.createdAt}
                 comments={post.children}
-              />
+                />
             ))}
+        
           </>
-        )}
+)}
       </section>
     </>
   )

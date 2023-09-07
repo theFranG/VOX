@@ -14,16 +14,15 @@ export async function createCommunity(
   username: string,
   image: string,
   bio: string,
-  createdById: string // Change the parameter name to reflect it's an id
+  createdById: string 
 ) {
   try {
     connectToDB();
 
-    // Find the user with the provided unique id
     const user = await User.findOne({ id: createdById });
 
     if (!user) {
-      throw new Error("User not found"); // Handle the case if the user with the id is not found
+      throw new Error("User not found");
     }
 
     const newCommunity = new Community({
@@ -32,18 +31,17 @@ export async function createCommunity(
       username,
       image,
       bio,
-      createdBy: user._id, // Use the mongoose ID of the user
+      createdBy: user._id, 
     });
 
     const createdCommunity = await newCommunity.save();
 
-    // Update User model
     user.communities.push(createdCommunity._id);
     await user.save();
 
     return createdCommunity;
   } catch (error) {
-    // Handle any errors
+
     console.error("Error creating community:", error);
     throw error;
   }

@@ -41,7 +41,7 @@ const Page = async ({params}: {params:{id:string}}) =>{
                                 {tab.label === 'Posts' && (
                                     <p className="ml-1 rounded-sm bg-light-4 px-2 py-1
                                     !text-tiny-medium text-light-2">
-                                        {userInfo?.post?.length}
+                                        {userInfo?.posts?.length}
                                     </p>
                                 )}
                             </TabsTrigger>

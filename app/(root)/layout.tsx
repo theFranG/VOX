@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "VOX",
+  description:'Share your thoughts'
 };
 
 export default function RootLayout({

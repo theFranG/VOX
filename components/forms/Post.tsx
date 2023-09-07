@@ -16,24 +16,17 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { PostValidation, CommentValidation } from "@/lib/validations/post";
+import { PostValidation } from "@/lib/validations/post";
 import { createPost } from "@/lib/actions/post.actions";
 
 interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
+userId:string
 }
 
-function Post({ userId }: { userId: string }) {
+function Post({ userId }:Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const {organization} = useOrganization()
 
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -44,10 +37,12 @@ function Post({ userId }: { userId: string }) {
   });
 
   const onSubmit = async (values: z.infer<typeof PostValidation>) =>{
-    await createPost({
+    console.log('ORG ID ', organization)
+    console.log(1+1)
+   await createPost({
         text: values.post,
         author:userId, 
-        communityId:null, 
+        communityId :organization ? organization.id : null, 
         path:pathname
     }) 
 

@@ -1,22 +1,23 @@
-import Post from "@/components/forms/Post"
-import  {fetchUser}  from "@/lib/actions/user.actions"
-import { currentUser } from "@clerk/nextjs"
-import { redirect } from "next/navigation"
+import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
-async function Page(){
-    const user = await currentUser()
-    if(!user) return null
+import Post from "@/components/forms/Post";
+import { fetchUser } from "@/lib/actions/user.actions";
 
-    const userInfo = await fetchUser(user.id)
+async function Page() {
+  const user = await currentUser();
+  if (!user) return null;
 
-    if(!userInfo?.onboarded) redirect('/onboarding')
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
 
-    return(
+  return (
     <>
-        <Post userId={userInfo._id}/>
+      <h1 className='head-text'>Create Post</h1>
+
+      <Post userId={userInfo._id} />
     </>
-    )
+  );
 }
 
-export default Page
-
+export default Page;
