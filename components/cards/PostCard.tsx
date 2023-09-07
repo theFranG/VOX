@@ -1,4 +1,5 @@
 import { formatDateString } from "@/lib/utils";
+import DeletePost from "../forms/DeletePost";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ interface Props {
     id: string;
     name: string;
     image: string;
-  } ;
+  } | null;
   createdAt: string;
   comments: {
     author: {
@@ -111,13 +112,13 @@ const PostCard = ({
           </div>
         </div>
 
-        {/* <DeleteThread
-          threadId={JSON.stringify(id)}
+        <DeletePost
+          postId={JSON.stringify(id)}
           currentUserId={currentUserId}
           authorId={author.id}
           parentId={parentId}
           isComment={isComment}
-        /> */}
+        />
       </div>
 
       {!isComment && comments.length > 0 && (
