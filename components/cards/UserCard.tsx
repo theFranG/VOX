@@ -28,10 +28,6 @@ const UserCard = ({id, name, username, imgUrl, personType}:Props) => {
           <h4 className='text-base-semibold text-light-1'>{name}</h4>
           <p className='text-small-medium text-gray-1'>@{username}</p>
         </div> 
-            <div className="flex-1 text-ellipsis">
-                <h4 className="text-base-semibold text-light-1">{name}</h4>
-                <p className="text-small-medium text-gray-1">@{username}</p>
-            </div>
         </div>
         <Button className="user-card_btn" onClick={()=>router.push(`/profile/${id}`)}>
             view
