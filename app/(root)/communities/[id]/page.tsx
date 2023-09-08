@@ -25,7 +25,7 @@ async function Page({ params }: { params: { id: string } }) {
         username={communityDetails.username}
         imgUrl={communityDetails.image}
         bio={communityDetails.bio}
-        type='Community'
+        type="Community"
       />
 
       <div className='mt-9'>
@@ -57,7 +57,7 @@ async function Page({ params }: { params: { id: string } }) {
             <ThreadsTab
               currentUserId={user.id}
               accountId={communityDetails._id}
-              accountType='Community'
+              accountType="Community"
             />
           </TabsContent>
 
@@ -74,15 +74,6 @@ async function Page({ params }: { params: { id: string } }) {
                 />
               ))}
             </section>
-          </TabsContent>
-
-          <TabsContent value='requests' className='w-full text-light-1'>
-            {/* @ts-ignore */}
-            <ThreadsTab
-              currentUserId={user.id}
-              accountId={communityDetails._id}
-              accountType='Community'
-            />
           </TabsContent>
         </Tabs>
       </div>
